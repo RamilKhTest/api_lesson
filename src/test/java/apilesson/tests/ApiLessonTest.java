@@ -30,8 +30,8 @@ public class ApiLessonTest {
                 .when()
                 .get("https://reqres.in/api/users/2")
                 .then()
-                .body("data.first_name", is("Janet"))
-                .statusCode(200);
+                .statusCode(200)
+                .body("data.first_name", is("Janet"));
     }
 
     @DisplayName("Проверка запроса списка пользователей")
@@ -61,10 +61,11 @@ public class ApiLessonTest {
                 .when()
                 .patch("https://reqres.in/api/users/2")
                 .then()
+                .statusCode(200)
                 .body("name", is("morpheus"))
-                .body("job", is("zion resident"))
-                .statusCode(200);
+                .body("job", is("zion resident"));
     }
+
    @DisplayName("Проверка создания нового пользователя")
     @Test
     void userCreateTest() {
@@ -77,8 +78,8 @@ public class ApiLessonTest {
                 .when()
                 .post("https://reqres.in/api/users")
                 .then()
+                .statusCode(201)
                 .body("name", is("ramil"))
-                .body("job", is("best-qa"))
-                .statusCode(201);
+                .body("job", is("best-qa"));
     }
 }
